@@ -1,0 +1,30 @@
+{
+  "name": "rest-api-on-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel app --out-dir build && webpack",
+    "start": "set NODE_ENV=production node ./build/index.js",
+    "develop": "set NODE_ENV=development node ./build/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.15.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "express-validator": "^3.2.0",
+    "express-vue": "^3.12.0",
+    "method-override": "^2.3.8",
+    "mongodb": "^2.2.26",
+    "morgan": "^1.8.1",
+    "webpack": "^1.15.0",
+    "webpack-dev-server": "^1.16.5"
+  }
+}
