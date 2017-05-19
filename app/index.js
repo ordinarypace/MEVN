@@ -5,8 +5,7 @@ import webpackDevServer from 'webpack-dev-server';
 import webpackConfig from '../webpack.dev.config';
 import { config } from './config/env';
 import initialize from './config/app';
-import routers from './routers';
-
+import routers from './config/router';
 
 const app = express();
 const port = 3000;
@@ -22,7 +21,7 @@ if(config.env === 'development'){
 }
 
 initialize(app, config);
-routers(app);
+routers(app, config);
 
 app.listen(port, () => {
     console.log('Server Starting at localhost:3000');

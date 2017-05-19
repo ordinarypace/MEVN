@@ -22,9 +22,9 @@ var _app = require('./config/app');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _routers = require('./routers');
+var _router = require('./config/router');
 
-var _routers2 = _interopRequireDefault(_routers);
+var _router2 = _interopRequireDefault(_router);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,7 +43,7 @@ if (_env.config.env === 'development') {
 }
 
 (0, _app2.default)(app, _env.config);
-(0, _routers2.default)(app);
+(0, _router2.default)(app, _env.config);
 
 app.listen(port, function () {
     console.log('Server Starting at localhost:3000');
