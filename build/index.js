@@ -26,10 +26,14 @@ var _router = require('./config/router');
 
 var _router2 = _interopRequireDefault(_router);
 
+var _cluster = require('./config/cluster');
+
+var _cluster2 = _interopRequireDefault(_cluster);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = (0, _express2.default)(); // load dependency modules
-
+// load dependency modules
+var app = (0, _express2.default)();
 var port = 3000;
 var devPort = 3001;
 
@@ -46,5 +50,6 @@ if (_env.config.env === 'development') {
 (0, _router2.default)(app, _env.config);
 
 app.listen(port, function () {
+    (0, _cluster2.default)();
     console.log('Server Starting at localhost:3000');
 });
