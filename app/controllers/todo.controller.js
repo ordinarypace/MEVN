@@ -19,17 +19,21 @@ export const add = (req, res) => {
     };
     let todo = new Todo(data);
 
-    todo.save((err) => {
+    todo.save((err, item) => {
         if(err){
             throw new Error(err);
         }
 
-        return res.json({success : true});
+        return res.json({success : true, _id : item.id});
     });
 };
 
 export const remove = (req, res) => {
-    Todo.findById(req.param.id, (err, user) => {
+    Todo.findByIdAndUpdate(req.body.id, {$set: {complete : true}}, (err, user) => {
+        if(err){
+            throw new Error(err);
+        }
 
+        res.json({success : true});
     })
 };

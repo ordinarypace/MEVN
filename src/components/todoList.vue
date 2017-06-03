@@ -1,8 +1,8 @@
 <template>
     <ul ref="todoList">
-        <li v-for="todo in todoList">
+        <li v-for="todo in todoList" :id="todo._id">
             {{ todo.text }}
-            <button type="button">complete</button>
+            <button type="button" @click="remove">complete</button>
         </li>
     </ul>
 </template>
@@ -13,9 +13,11 @@
             todoList : Array
         },
 
-        data(){
-            return {
+        methods : {
+            remove(e){
+                let target = e.target.parentNode.id;
 
+                this.$emit('removeTodo', target);
             }
         }
     }

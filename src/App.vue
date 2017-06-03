@@ -1,7 +1,7 @@
 <template lang="html">
     <div>
         <h1>TODO LIST</h1>
-        <TodoList :todo-list="todoList"></TodoList>
+        <TodoList :todo-list="isActiveList" @removeTodo="removeTodo"></TodoList>
         <TodoAdd @addTodo="addTodo"></TodoAdd>
     </div>
 </template>
@@ -23,16 +23,21 @@
         },
 
         beforeMount(){
-            let _self = this;
-
-            this.$http.get('/todo').then(function(res){
+            this.$http.get('/todo').then(res => {
                 if(res){
-                    _self.todoList = res.data;
+                    this.todoList = res.data;
                 }
-            }).catch(function(err){
-                console.log(err);
+            }).catch(err => console.log(err));
+        },
 
-            });
+        computed : {
+            isActiveList(){
+                return this.todoList.filter(todo => {
+                    if(!todo.complete){
+                        return true;
+                    }
+                });
+            }
         },
 
         methods : {
@@ -40,9 +45,24 @@
                 this.$http.post('/todo/add', {
                     text : text
 
-                }).then(function(res){
+                }).then(res => {
                     if(res.data.success){
+                        this.todoList = [...this.todoList, {_id : res.data._id, text : text, complete : false}];
                         console.log('Complete to Add todo!');
+                    }
+                });
+            },
+
+            removeTodo(id){
+                this.$http.post('/todo/remove', {
+                    id : id
+
+                }).then(res => {
+                    if(res.data.success){
+                        const index = this.todoList.findIndex(item => item.id === id);
+
+                        this.todoList.splice(index, 1);
+                        console.log('Remove Todo Item!!')
                     }
                 });
             }

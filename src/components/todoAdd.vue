@@ -7,12 +7,6 @@
 <script>
     export default {
         name : 'todo-add',
-        data(){
-            return {
-
-            }
-        },
-
         methods : {
             add(){
                 let value = this.$refs.todoText.value;
