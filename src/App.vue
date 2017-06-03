@@ -1,25 +1,21 @@
 <template lang="html">
     <div>
         <h1>TODO LIST</h1>
-        <ul v-if="todoList">
-            <li v-for="todo in todoList" :key="todo._id">
-                {{ todo.text }}
-            </li>
-        </ul>
-        <div>
-            <input type="text" ref="todoText">
-            <button type="button" @click="addTodo">Add TODO!</button>
-        </div>
+        <TodoList :todo-list="todoList"></TodoList>
+        <TodoAdd @addTodo="addTodo"></TodoAdd>
     </div>
 </template>
 
 <script>
-    import Vue from 'vue';
-    import axios from 'axios';
-
-    Vue.prototype.$http = axios;
+    import TodoList from './components/todoList.vue';
+    import TodoAdd from './components/todoAdd.vue';
 
     export default {
+        name : 'todo-container',
+        components : {
+            TodoList,
+            TodoAdd
+        },
         data(){
             return {
                 todoList : []
@@ -40,24 +36,15 @@
         },
 
         methods : {
-            addTodo(){
-                if(this.validateTodo().length === 0){
-                    console.log('Value is empty!!');
-                    return false;
-                }
-
+            addTodo(text){
                 this.$http.post('/todo/add', {
-                    text : this.validateTodo()
+                    text : text
 
                 }).then(function(res){
-                    if(res.success){
-                        console.log(res.id)
+                    if(res.data.success){
+                        console.log('Complete to Add todo!');
                     }
-                })
-            },
-
-            validateTodo(){
-                return this.$refs.todoText.value.trim();
+                });
             }
         }
     }

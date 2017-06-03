@@ -44,6 +44,7 @@ module.exports = {
         }
     },
 
+    // fixed vue runtime error
     resolve : {
         alias : {
             vue : 'vue/dist/vue.js'

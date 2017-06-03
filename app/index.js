@@ -12,7 +12,7 @@ import database from './config/database';
 const app = express();
 const port = 3000;
 
-let proxyTable = {};
+let proxyTable = config.proxyTable;
 let compiler = webpack(webpackConfig);
 
 let devMiddleware = require('webpack-dev-middleware')(compiler, {
@@ -55,8 +55,6 @@ app.use(hotMiddleware);
 devMiddleware.waitUntilValid(() => {
     console.log('> Listening at localhost:3000')
 });
-
-
 
 initialize(app, config);
 database();

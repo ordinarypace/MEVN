@@ -1,9 +1,9 @@
 import Todo from '../models/todo.model';
 
 export const todo = (req, res) => {
-    let data = Todo.find({}, (err, docs) => {
-        if(docs.length > 0){
-            return res.json(docs);
+    let data = Todo.find({}, (err, data) => {
+        if(data.length > 0){
+            return res.json(data);
 
         } else {
             return res.json(null);
@@ -23,9 +23,9 @@ export const add = (req, res) => {
         if(err){
             throw new Error(err);
         }
-    });
 
-    return res.json({success : true, id : res._id});
+        return res.json({success : true});
+    });
 };
 
 export const remove = (req, res) => {
