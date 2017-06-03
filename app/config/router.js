@@ -3,7 +3,7 @@ import express from 'express';
 
 export default (app, config) => {
     const router = express.Router();
-    const routers = glob.sync(config.root + '/routers/**/*.js');
+    const routers = glob.sync(config.root + '/build/routers/**/*.js');
 
     app.use('/', router);
 

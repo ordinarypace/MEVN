@@ -6,5 +6,5 @@ export default () => {
     db.on('error', console.error);
     db.once('open', () => console.log("Connection to mongod server"));
 
-    mongoose.connect('mongodb://localhost/');
+    mongoose.connect('mongodb://localhost:27017/User');
 }

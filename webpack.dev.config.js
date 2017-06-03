@@ -1,32 +1,24 @@
 let webpack = require('webpack');
+let htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: [
-        './src/index.js',
-        'webpack-dev-server/client?http://0.0.0.0:3001',
-        'webpack/hot/only-dev-server'
-    ],
+    devtool : '#eval-source-map',
+    entry: './src/index.js',
 
     output: {
-        path: '/',
+        path: __dirname + '/public/js',
         filename: 'bundle.js'
-    },
-
-    devServer: {
-        hot: true,
-        filename: 'bundle.js',
-        publicPath: '/',
-        historyApiFallback: true,
-        contentBase: './public',
-        proxy: {
-            "**": "http://localhost:3000"
-        }
     },
 
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new htmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+            inject: true
+        })
     ],
 
     module: {
@@ -38,7 +30,23 @@ module.exports = {
                     presets: ['es2015']
                 })],
                 exclude: /node_modules/
+            },
+            {
+                test : /\.vue$/,
+                loader : 'vue'
             }
         ]
+    },
+
+    vue : {
+        loaders : {
+            js : 'babel'
+        }
+    },
+
+    resolve : {
+        alias : {
+            vue : 'vue/dist/vue.js'
+        }
     }
 };

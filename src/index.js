@@ -1,3 +1,10 @@
-/**
- * Created by jsjang on 2017-05-13.
- */
+import Vue from 'vue';
+import App from './app.vue';
+
+new Vue({
+    el : '#app',
+    template : '<App />',
+    components : { App }
+});
+
+
