@@ -3,7 +3,9 @@ import { FETCH_TODO, ADD_TODO, REMOVE_TODO } from '../type';
 
 export const fetchTodo = ({ commit }) => {
     axios.get('/todo').then(res => {
-        commit(FETCH_TODO, res.data.length > 0 ? res.data : []);
+        if(res.data){
+            commit(FETCH_TODO, res.data.length > 0 ? res.data : []);
+        }
 
     }).catch(err => console.log(err));
 };

@@ -21,7 +21,7 @@
         beforeMount(){
             this.$store.dispatch('fetchTodo');
         },
-        
+
         //TODO : vuex getter로 변경 예정
         computed : {
             isActiveList(){
