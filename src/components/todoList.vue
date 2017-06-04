@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="todo in todoList" :id="todo._id">
+        <li v-for="todo in todoList" :id="todo._id" :key="todoSize">
             {{ todo.text }}
             <button type="button" @click="remove">complete</button>
         </li>
@@ -10,7 +10,8 @@
     export default {
         name : 'todo-list',
         props : {
-            todoList : Array
+            todoList : Array,
+            todoSize : Number
         },
 
         methods : {

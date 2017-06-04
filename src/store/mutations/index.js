@@ -6,7 +6,6 @@ export default {
     },
 
     [ADD_TODO](state, { text, _id }){
-        console.log(_id)
         state.todoList.push({
             _id,
             text,

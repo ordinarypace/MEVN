@@ -1,7 +1,11 @@
 <template lang="html">
     <div>
         <h1>TODO LIST</h1>
-        <TodoList :todo-list="todoFilter" @removeTodo="removeTodo"></TodoList>
+        <TodoList
+            :todo-list="todoFilter"
+            :todo-size="todoSize"
+            @removeTodo="removeTodo">
+        </TodoList>
         <TodoAdd @addTodo="addTodo"></TodoAdd>
     </div>
 </template>
@@ -23,7 +27,8 @@
         },
 
         computed : mapGetters([
-            'todoFilter'
+            'todoFilter',
+            'todoSize'
         ]),
 
         methods : mapActions([
