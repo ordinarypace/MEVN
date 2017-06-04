@@ -7,6 +7,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import TodoList from './components/todoList.vue';
     import TodoAdd from './components/todoAdd.vue';
 
@@ -16,23 +17,15 @@
             TodoList,
             TodoAdd
         },
-        data(){
-            return {
-                todoList : []
-            };
-        },
 
         beforeMount(){
-            this.$http.get('/todo').then(res => {
-                if(res){
-                    this.todoList = res.data;
-                }
-            }).catch(err => console.log(err));
+            this.$store.dispatch('fetchTodo');
         },
-
+        
+        //TODO : vuex getter로 변경 예정
         computed : {
             isActiveList(){
-                return this.todoList.filter(todo => {
+                return this.$store.state.todoList.filter(todo => {
                     if(!todo.complete){
                         return true;
                     }
@@ -40,33 +33,11 @@
             }
         },
 
-        methods : {
-            addTodo(text){
-                this.$http.post('/todo/add', {
-                    text : text
-
-                }).then(res => {
-                    if(res.data.success){
-                        this.todoList = [...this.todoList, {_id : res.data._id, text : text, complete : false}];
-                        console.log('Complete to Add todo!');
-                    }
-                });
-            },
-
-            removeTodo(id){
-                this.$http.post('/todo/remove', {
-                    id : id
-
-                }).then(res => {
-                    if(res.data.success){
-                        const index = this.todoList.findIndex(item => item.id === id);
-
-                        this.todoList.splice(index, 1);
-                        console.log('Remove Todo Item!!')
-                    }
-                });
-            }
-        }
+        methods : mapActions([
+            'fetchTodo',
+            'addTodo',
+            'removeTodo'
+        ])
     }
 </script>
 
