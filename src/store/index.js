@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as actions from './actions';
+import * as getters from './getters';
 import mutations from './mutations';
 import plugins from './plugins';
 
@@ -11,6 +12,7 @@ export default new Vuex.Store({
         todoList : []
     },
     mutations,
+    getters,
     plugins,
     actions,
 });

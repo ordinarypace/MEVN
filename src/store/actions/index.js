@@ -16,18 +16,20 @@ export const addTodo = ({ commit }, text) => {
 
     }).then(res => {
         if(res.data.success){
-            commit(ADD_TODO, { text });
+            const _id = res.data._id;
+            console.log(_id);
+            commit(ADD_TODO, { text, _id });
         }
     }).catch(err => console.log(err));
 };
 
-export const removeTodo = ({ commit }, id) => {
+export const removeTodo = ({ commit }, _id) => {
     axios.post('/todo/remove', {
-        id : id
+        id : _id
 
     }).then(res => {
         if(res.data.success){
-            commit(REMOVE_TODO, { id });
+            commit(REMOVE_TODO, _id);
         }
     }).catch(err => console.log(err));
 };

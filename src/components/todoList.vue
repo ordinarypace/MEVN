@@ -1,5 +1,5 @@
 <template>
-    <ul ref="todoList">
+    <ul>
         <li v-for="todo in todoList" :id="todo._id">
             {{ todo.text }}
             <button type="button" @click="remove">complete</button>
@@ -15,9 +15,10 @@
 
         methods : {
             remove(e){
-                let target = e.target.parentNode.id;
+                const target = e.target;
+                const _id = target.parentNode.id;
 
-                this.$emit('removeTodo', target);
+                this.$emit('removeTodo', _id);
             }
         }
     }

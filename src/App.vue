@@ -1,13 +1,13 @@
 <template lang="html">
     <div>
         <h1>TODO LIST</h1>
-        <TodoList :todo-list="isActiveList" @removeTodo="removeTodo"></TodoList>
+        <TodoList :todo-list="todoFilter" @removeTodo="removeTodo"></TodoList>
         <TodoAdd @addTodo="addTodo"></TodoAdd>
     </div>
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
     import TodoList from './components/todoList.vue';
     import TodoAdd from './components/todoAdd.vue';
 
@@ -22,16 +22,9 @@
             this.$store.dispatch('fetchTodo');
         },
 
-        //TODO : vuex getter로 변경 예정
-        computed : {
-            isActiveList(){
-                return this.$store.state.todoList.filter(todo => {
-                    if(!todo.complete){
-                        return true;
-                    }
-                });
-            }
-        },
+        computed : mapGetters([
+            'todoFilter'
+        ]),
 
         methods : mapActions([
             'fetchTodo',

@@ -5,15 +5,17 @@ export default {
         state.todoList = todos;
     },
 
-    [ADD_TODO](state, { text }){
+    [ADD_TODO](state, { text, _id }){
+        console.log(_id)
         state.todoList.push({
+            _id,
             text,
             complete : false
         })
     },
 
-    [REMOVE_TODO](state, { id }){
-        const index = state.todoList.findIndex(item => item.id === id);
+    [REMOVE_TODO](state, id){
+        const index = state.todoList.findIndex(item => item._id === id);
 
         state.todoList.splice(index, 1);
     }

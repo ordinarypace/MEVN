@@ -9,14 +9,26 @@
         name : 'todo-add',
         methods : {
             add(){
-                let value = this.$refs.todoText.value;
+                let input = this.$refs.todoText;
+                let value = input.value;
 
+                if(this.validateValue(value)){
+                    this.$emit('addTodo', value);
+                    this.initialize(input);
+                }
+            },
+
+            validateValue(value){
                 if(value.trim().length === 0){
                     alert('Value is empty!!');
                     return false;
                 }
+                return true;
+            },
 
-                this.$emit('addTodo', value);
+            initialize(input){
+                input.value = '';
+                input.focus();
             }
         }
     }
