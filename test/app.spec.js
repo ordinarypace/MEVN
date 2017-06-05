@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import Component from '../src/app.vue';
+import Component from '../src/components/todoAdd.vue';
 
-describe("Todo App Container Component", () => {
-    it('should have data', () => {
-        expact(typeof Component.computed).tobe('function');
+describe("할 일 추가 컴포넌트 검사", () => {
+    it('추가 함수가 동작하는지', () => {
+        expect(typeof Component.methods.add).toBe('function');
     });
 });
