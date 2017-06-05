@@ -26,16 +26,24 @@
             this.$store.dispatch('fetchTodo');
         },
 
-        computed : mapGetters([
-            'todoFilter',
-            'todoSize'
-        ]),
+        Mounted(){
+            console.log(this)
+        },
 
-        methods : mapActions([
-            'fetchTodo',
-            'addTodo',
-            'removeTodo'
-        ])
+        computed : {
+            ...mapGetters([
+                'todoFilter',
+                'todoSize'
+            ])
+        },
+
+        methods : {
+            ...mapActions([
+                'fetchTodo',
+                'addTodo',
+                'removeTodo'
+            ])
+        }
     }
 </script>
 

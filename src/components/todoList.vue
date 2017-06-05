@@ -10,7 +10,10 @@
     export default {
         name : 'todo-list',
         props : {
-            todoList : Array,
+            todoList : {
+                type : Array,
+                required : true
+            },
             todoSize : Number
         },
 
