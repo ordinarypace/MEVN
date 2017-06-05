@@ -1,8 +1,5 @@
 # MEVN
-##### [MongoDB(mongoose)](http://mongoosejs.com/)
-##### [Express](http://expressjs.com/ko/)
-##### [Vue](https://vuejs.org/)
-##### [Node](https://nodejs.org/ko/)
+##### [MongoDB(mongoose)](http://mongoosejs.com/) / [Express](http://expressjs.com/ko/) / [Vue](https://vuejs.org/) / [Node](https://nodejs.org/ko/)
 
 # Use
 
