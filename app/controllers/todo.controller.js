@@ -1,6 +1,6 @@
 import Todo from '../models/todo.model';
 
-export const todo = (req, res) => {
+export const fetch = (req, res) => {
     let data = Todo.find({}, (err, data) => {
         if(data.length > 0){
             return res.json(data);
@@ -20,19 +20,29 @@ export const add = (req, res) => {
 
     todo.save((err, item) => {
         if(err){
-            throw new Error(err);
+            res.send(err);
         }
 
         return res.json({success : true, _id : item.id});
     });
 };
 
-export const remove = (req, res) => {
+export const toggle = (req, res) => {
     Todo.findByIdAndUpdate(req.body.id, {$set: {complete : true}}, (err, user) => {
         if(err){
-            throw new Error(err);
+            res.send(err);
         }
 
         res.json({success : true});
     })
+};
+
+export const remove = (req, res) => {
+    Todo.findOneAndRemove(req.param.id, (err, user) => {
+        if(err){
+            res.send(err);
+        }
+
+        res.json({success : true});
+    });
 };

@@ -4,6 +4,7 @@
         <TodoList
             :todo-list="todoFilter"
             :todo-size="todoSize"
+            @toggleTodo="toggleTodo"
             @removeTodo="removeTodo">
         </TodoList>
         <TodoAdd @addTodo="addTodo"></TodoAdd>
@@ -26,10 +27,6 @@
             this.$store.dispatch('fetchTodo');
         },
 
-        Mounted(){
-            console.log(this)
-        },
-
         computed : {
             ...mapGetters([
                 'todoFilter',
@@ -41,6 +38,7 @@
             ...mapActions([
                 'fetchTodo',
                 'addTodo',
+                'toggleTodo',
                 'removeTodo'
             ])
         }
