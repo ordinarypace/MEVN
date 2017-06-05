@@ -7,7 +7,8 @@
     "clean": "rm -rf build public/bundle.js",
     "build": "babel app --out-dir build && webpack",
     "start": "set:NODE_ENV=production node ./build/index.js",
-    "develop": "set:NODE_ENV=development && node ./build/index.js"
+    "develop": "set:NODE_ENV=development && node ./build/index.js",
+    "test" : "karma start"
   },
   "author": "jang jeong sik",
   "license": "ISC",
