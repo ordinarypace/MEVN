@@ -9,7 +9,7 @@ MongoDB(mongoose)/Express/Vue/Node
 <span style="color:gray">server-side scripts & client-side scripts transpile ES2015</span>
 <code>npm run build</code>
 
-<span style="color:gray">*Open local server (port:3000) & webpack watching*</span>
+<span style="color:gray">Open local server (port:3000) & webpack watching</span>
 <code>npm run develop</code>
 
 <span style="color:gray">clean build folder</span>
