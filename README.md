@@ -2,13 +2,14 @@
 MongoDB(mongoose)/Express/Vue/Node
 
 # Use
+<pre>
 install dependencies & dev dependencies.
-1. npm install
+<code>npm install</code>
 
 server-side scripts & client-side scripts transpile ES2015
-2. npm run build
+<code>npm run build</code>
 
 Open local server (port:3000) & webpack watching
-3. npm run develop
-
+<code>npm run develop</code>
+</pre>
 npm run clean (remove public > bundle.js & build folder)
