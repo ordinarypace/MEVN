@@ -6,6 +6,4 @@ export const todoFilter = state => {
     })
 }
 
-export const todoSize = state => {
-    return state.todoList.length;
-}
+export const todoSize = state => state.todoList.length;
