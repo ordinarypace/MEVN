@@ -6,10 +6,10 @@ MongoDB(mongoose)/Express/Vue/Node
 <span style="color:gray">install dependencies & dev dependencies.</span>
 <code>npm install</code>
 
-<span style="color:gray">server-side scripts & client-side scripts transpile ES2015</span>
+<span style="color:gray">build server-side scripts & transpiling client-side scripts to ES2015</span>
 <code>npm run build</code>
 
-<span style="color:gray">Open local server (port:3000) & webpack watching</span>
+<span style="color:gray">open local server (port:3000) & watching webpack</span>
 <code>npm run develop</code>
 
 <span style="color:gray">clean build folder</span>
