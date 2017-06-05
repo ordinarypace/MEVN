@@ -2,7 +2,7 @@
 MongoDB(mongoose)/Express/Vue/Node
 
 # Use
-<pre>
+
 <span style="color:gray">install dependencies & dev dependencies.</span>
 <code>npm install</code>
 
@@ -17,4 +17,4 @@ MongoDB(mongoose)/Express/Vue/Node
 
 <span style="color:gray">Test</span>
 <code>npm run test</code>
-</pre>
+
