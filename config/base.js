@@ -1,25 +1,20 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var base = {
-    entry : './src/index.js',
-    output: {
-        path: __dirname + '/public/js',
-        filename: 'bundle.js'
-    },
-};
-
 module.exports = function(){
     return {
-        entry : base.entry,
-        output : base.output,
+        entry : './src/index.js',
+        output : {
+            path : __dirname + '/../public/js',
+            filename : 'bundle.js'
+        },
         module: {
-            loaders: [
+            loaders : [
                 {
-                    test: /\.js$/,
-                    loader: 'babel',
-                    exclude: /node_modules/,
-                    query: {
+                    test : /\.js$/,
+                    loader : 'babel',
+                    exclude : /node_modules/,
+                    query : {
                         cacheDirectory: true,
                         presets: ['es2015']
                     }
