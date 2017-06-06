@@ -1,10 +1,9 @@
-let webpack = require('webpack');
-let htmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack');
+var htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool : '#eval-source-map',
     entry: './src/index.js',
-
     output: {
         path: __dirname + '/public/js',
         filename: 'bundle.js'
@@ -25,11 +24,12 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loaders: ['babel?' + JSON.stringify({
+                loader: 'babel',
+                exclude: /node_modules/,
+                query: {
                     cacheDirectory: true,
                     presets: ['es2015']
-                })],
-                exclude: /node_modules/
+                }
             },
             {
                 test : /\.vue$/,
