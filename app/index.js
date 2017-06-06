@@ -1,8 +1,8 @@
 // load dependency modules
 import express from 'express';
 import webpack from 'webpack';
+import webpackConfig from '../config/webpack.config';
 import opn from 'opn';
-import webpackConfig from '../webpack.dev.config';
 import proxyMiddleware from 'http-proxy-middleware';
 import { config } from './config/env';
 import initialize from './config/app';
@@ -10,7 +10,7 @@ import routers from './config/router';
 import database from './config/database';
 
 const app = express();
-const port = 3000;
+const port = config.port;
 
 let proxyTable = config.proxyTable;
 let compiler = webpack(webpackConfig);
