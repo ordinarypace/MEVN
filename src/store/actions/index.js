@@ -3,7 +3,7 @@ import { FETCH_TODO, ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../type';
 
 // fetch Todos data action
 export const fetchTodo = ({ commit }) => {
-    axios.get('/todo/fetch').then(res => {
+    axios.get('/todo').then(res => {
         if(res.data){
             commit(FETCH_TODO, res.data.length > 0 ? res.data : []);
         }
@@ -13,7 +13,7 @@ export const fetchTodo = ({ commit }) => {
 
 // add Todo action
 export const addTodo = ({ commit }, text) => {
-    axios.post('/todo/add', {
+    axios.post('/todo', {
         text : text
 
     }).then(res => {
@@ -26,7 +26,7 @@ export const addTodo = ({ commit }, text) => {
 
 // toggle Todo action
 export const toggleTodo = ({ commit }, _id) => {
-    axios.post('/todo/toggle', {
+    axios.put('/todo', {
         id : _id
 
     }).then(res => {
@@ -38,7 +38,7 @@ export const toggleTodo = ({ commit }, _id) => {
 
 // remove Todo action
 export const removeTodo = ({ commit }, _id) => {
-    axios.get('/todo/remove/' + _id).then(res => {
+    axios.delete('/todo').then(res => {
         if(res.data.success){
             commit(TOGGLE_TODO, _id);
         }

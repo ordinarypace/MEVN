@@ -38,7 +38,7 @@ export const toggle = (req, res) => {
 };
 
 export const remove = (req, res) => {
-    Todo.findOneAndRemove(req.param.id, (err, user) => {
+    Todo.findOneAndRemove(req.body.id, (err, user) => {
         if(err){
             res.send(err);
         }

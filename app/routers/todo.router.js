@@ -1,8 +1,8 @@
 import * as TodoController from '../controllers/todo.controller';
 
 export default (router) => {
-    router.get('/todo/fetch', TodoController.fetch);
-    router.post('/todo/add', TodoController.add);
-    router.post('/todo/toggle', TodoController.toggle);
-    router.get('/todo/remove/:id', TodoController.remove);
+    router.get('/todo', TodoController.fetch);
+    router.post('/todo', TodoController.add);
+    router.put('/todo', TodoController.toggle);
+    router.delete('/todo', TodoController.remove);
 }
