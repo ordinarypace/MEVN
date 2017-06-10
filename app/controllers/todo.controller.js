@@ -1,7 +1,7 @@
 import Todo from '../models/todo.model';
 
 export const fetch = (req, res) => {
-    let data = Todo.find({}, (err, data) => {
+    let data = Todo.find({}).lean().exec((err, data) => {
         if(data.length > 0){
             return res.json(data);
         }
