@@ -7,13 +7,13 @@ import validator from 'express-validator';
 import expressVue from 'express-vue';
 
 export default (app, config) => {
-    //app.set('views', config.root + '/src');
-    //app.set('vue', {
-    //    componentsDir: config.root + '/src/components',
-    //    defaultLayout: 'layout'
-    //});
-    //app.engine('vue', expressVue);
-    //app.set('view engine', 'vue');
+    app.set('views', config.root + '/src');
+    app.set('vue', {
+       componentsDir: config.root + '/src/components',
+       defaultLayout: 'layout'
+    });
+    app.engine('vue', expressVue);
+    app.set('view engine', 'vue');
 
     app.use(express.static('public'));
 
@@ -26,4 +26,3 @@ export default (app, config) => {
     app.use(validator());
     app.use(methodOverride());
 };
-
