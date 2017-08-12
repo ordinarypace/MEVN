@@ -33,7 +33,7 @@ export const toggle = (req, res) => {
             res.send(err);
         }
 
-        res.json({success : true});
+        return res.json({success : true});
     })
 };
 
@@ -43,6 +43,6 @@ export const remove = (req, res) => {
             res.send(err);
         }
 
-        res.json({success : true});
+        return res.json({success : true});
     });
 };
