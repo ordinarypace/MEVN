@@ -8,3 +8,9 @@ var home = exports.home = function home(req, res) {
         res.send('hello my home');
     }
 };
+
+var fetch = exports.fetch = function fetch(req, res) {
+    if (res) {
+        res.send('hello');
+    }
+};

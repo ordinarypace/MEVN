@@ -44,7 +44,7 @@ var toggle = exports.toggle = function toggle(req, res) {
             res.send(err);
         }
 
-        res.json({ success: true });
+        return res.json({ success: true });
     });
 };
 
@@ -54,6 +54,6 @@ var remove = exports.remove = function remove(req, res) {
             res.send(err);
         }
 
-        res.json({ success: true });
+        return res.json({ success: true });
     });
 };

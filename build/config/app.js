@@ -35,13 +35,13 @@ var _expressVue2 = _interopRequireDefault(_expressVue);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (app, config) {
-    //app.set('views', config.root + '/src');
-    //app.set('vue', {
-    //    componentsDir: config.root + '/src/components',
-    //    defaultLayout: 'layout'
-    //});
-    //app.engine('vue', expressVue);
-    //app.set('view engine', 'vue');
+    app.set('views', config.root + '/src');
+    app.set('vue', {
+        componentsDir: config.root + '/src/components',
+        defaultLayout: 'layout'
+    });
+    app.engine('vue', _expressVue2.default);
+    app.set('view engine', 'vue');
 
     app.use(_express2.default.static('public'));
 

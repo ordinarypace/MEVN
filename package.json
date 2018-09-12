@@ -6,17 +6,19 @@
   "scripts": {
     "clean": "rm -rf build ./public/js",
     "build": "babel app --out-dir build && webpack --progress --color --config ./config/webpack.config.js",
-    "start": "set:NODE_ENV=production node ./build/index.js",
-    "develop": "set:NODE_ENV=development && node ./build/index.js",
+    "start": "node ./build/index.js",
+    "develop": "node ./build/index.js",
     "test": "karma start"
   },
   "author": "jang jeong sik",
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.16.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "connect-history-api-fallback": "^1.3.0",
     "css-loader": "^0.28.1",
     "express-validator": "^3.2.0",

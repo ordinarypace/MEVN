@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (app, config) {
     var router = _express2.default.Router();
-    var routers = _glob2.default.sync(config.root + '/build/routers/**/*.js');
+    var routers = _glob2.default.sync(config.root + '/build/routes/**/*.js');
 
     app.use('/', router);
 
